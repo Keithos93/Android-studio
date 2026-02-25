@@ -17,13 +17,13 @@ import com.example.noteapp.ui.theme.theme.PurpleGrey40
 fun NoteScreen(){
     Scaffold(
         topBar = {NoteTopBar()},
-        floatingActionButton = {NoteFab()},
-        modifier = Modifier
-            .fillMaxSize()
-            .background(PurpleGrey40)
+        floatingActionButton = { NoteFab() },
+        modifier = Modifier.fillMaxSize(),
+        containerColor = PurpleGrey40
     ) { innerPadding ->
         NoteContent(
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier
+                .padding(innerPadding)
         )
     }
 }
