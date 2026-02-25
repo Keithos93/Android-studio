@@ -1,8 +1,11 @@
 package com.example.noteapp.model
 
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class NoteRepository(private val noteDao: NoteDao) {
+class NoteRepository @Inject constructor(
+    private val noteDao : NoteDao
+) {
 
     suspend fun insertNote(note: Note) { noteDao.insert(note) }
 
