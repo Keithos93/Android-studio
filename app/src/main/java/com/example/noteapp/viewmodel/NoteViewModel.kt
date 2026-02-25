@@ -12,22 +12,28 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
-class NoteViewModel (
+class NoteViewModel(
     private val noteRepository: NoteRepository
-): ViewModel() {
-    private val _notes = MutableStateFlow<List<Note>>(value = emptyList())
+) : ViewModel(){
+    private var _notes = MutableStateFlow<List<Note>>(emptyList())
     val notes: StateFlow<List<Note>> = _notes.asStateFlow()
 
-    private var _noteSearched = MutableStateFlow<Note?>(value = null)
-    val notesSearched: StateFlow<Note?> = _noteSearched
+    private var _notesSearched = MutableStateFlow<List<Note>>(emptyList())
+    val notesSearched: StateFlow<List<Note>> = _notesSearched
 
     init {
         getAllNotes()
     }
 
-    fun getAllNotes() : Flow<List<Note>> = flow {
+    fun getAllNotes(): Flow<List<Note>> = flow {
         noteRepository.getAllNotes().collectLatest { notesUpdated ->
             _notes.value = notesUpdated
+        }
+    }
+
+    fun searchNotes(query: String): Flow<List<Note>> = flow {
+        noteRepository.searchNotes(query).collectLatest { notesSearchedUpdated ->
+            _notesSearched.value = notesSearchedUpdated
         }
     }
 
