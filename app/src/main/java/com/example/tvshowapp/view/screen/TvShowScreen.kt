@@ -41,7 +41,3 @@ fun TvShowScreen(){
     }
 }
 
-@Composable
-fun TvShowItem() {
-
-}

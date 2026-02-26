@@ -70,7 +70,7 @@ dependencies {
     //Coil : Chargement d'image
     implementation("io.coil-kt.coil3:coil-compose:3.4.0")
     // Retrofit : preparer les requetes HTTP
-    implementation("com.squareup.retrofit2:retrofit:3.1.0~SNAPSHOT")
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
     implementation("com.squareup.retrofit2:converter-gson:3.0.0")
     implementation("com.google.code.gson:gson:2.13.2")
 }
